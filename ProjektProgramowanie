@@ -5,7 +5,7 @@ print("Witaj w grze papier, kamień, nożyce stworzonej przez Kamila Małeckiego
 while True:
     def play():
         gracz = input("Co wybierasz? 'k' jeśli chcesz wybrać Kamień, 'p' jeśli chcesz wybrać Papier, 'n' jeśli chcesz wybrać Nożyce\n")
-        time.sleep(2)
+        time.sleep(1)
         komputer = random.choice(['k', 'p', 'n'])
 
         if gracz == komputer:
