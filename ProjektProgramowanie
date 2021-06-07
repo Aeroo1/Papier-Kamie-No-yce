@@ -2,30 +2,30 @@ import time
 import random
 
 print("Witaj w grze papier, kamień, nożyce stworzonej przez Kamila Małeckiego\n")
+def play():
+    gracz = input("Co wybierasz? 'k' jeśli chcesz wybrać Kamień, 'p' jeśli chcesz wybrać Papier, 'n' jeśli chcesz wybrać Nożyce\n")
+    time.sleep(0.5)
+    komputer = random.choice(['k', 'p', 'n'])
+
+    if gracz == komputer:
+        return 'Remis\n'
+
+    #warunki wygrania przez gracza: kamień > nożyce, nożyce > papier, papier > kamień
+    if is_win(gracz, komputer):
+            return 'Wygrałeś!\n'
+    # Nie potrzebujemy kolejnego if ponieważ wszystkie inne opcje zostały wyczerpane w poprzednich dwóch, co automatycznie oznacza tylko możliwość przegranej
+    return 'Przegrałeś!\n'
+
+
+def is_win(player, opponent):
+    # Zwraca wartość prawdziwą jeśli gracz wygra
+    # Kamień > Nożyce, Nożyce > Papier, Papier > Kamień
+    if (player == 'k' and opponent == 'n') or (player == 'n' and opponent == 'p') \
+        or (player == 'p' and opponent == 'k'):
+        return True
 while True:
-    def play():
-        gracz = input("Co wybierasz? 'k' jeśli chcesz wybrać Kamień, 'p' jeśli chcesz wybrać Papier, 'n' jeśli chcesz wybrać Nożyce\n")
-        time.sleep(1)
-        komputer = random.choice(['k', 'p', 'n'])
-
-        if gracz == komputer:
-            return 'Remis\n'
-
-        #warunki wygrania przez gracza: kamień > nożyce, nożyce > papier, papier > kamień
-        if is_win(gracz, komputer):
-                return 'Wygrałeś!\n'
-        # Nie potrzebujemy kolejnego if ponieważ wszystkie inne opcje zostały wyczerpane w poprzednich dwóch, co automatycznie oznacza tylko możliwość przegranej
-        return 'Przegrałeś!\n'
-
-
-    def is_win(player, opponent):
-        # Zwraca wartość prawdziwą jeśli gracz wygra
-        # Kamień > Nożyce, Nożyce > Papier, Papier > Kamień
-        if (player == 'k' and opponent == 'n') or (player == 'n' and opponent == 'p') \
-            or (player == 'p' and opponent == 'k'):
-            return True
-
     print(play())
+    time.sleep(1)
     loop = input("Czy chcesz zagrać jeszcze raz? Wpisz tak/nie: \n").lower()
     if loop == "nie":
         print("Do zobaczenia!")
